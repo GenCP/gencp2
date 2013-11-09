@@ -7,6 +7,7 @@ package appws;
 
 
 public class GenerarActivityDiagram implements java.io.Serializable {
+
     protected java.lang.String templateFile;
     protected java.lang.String activityDiagramFile;
     
