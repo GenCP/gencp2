@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='windows-1252'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document id="d1" title="Generar Secuencias">
+            <af:messages id="m1"/>
+            <af:form id="f1" usesUpload="true">
+                <af:pageTemplate viewId="/oracle/ui/pattern/dynamicShell/dynamicTabShell.jspx" id="pt1"
+                                 value="#{bindings.ptb1}">
+                    <f:facet name="navigation">
+                        <af:group id="g2">
+                            <af:tree var="node" value="#{treeModel.model}" id="t4"
+                                     summary="Arbol de metodos sacados del Diagrama de Clases"
+                                     binding="#{BackingGenCP.arbolProyectos}" initiallyExpanded="true">
+                                <f:facet name="nodeStamp">
+                                    <af:outputText value="#{node.text}" id="ot2">
+                                        <af:clientAttribute name="nodeText" value="#{node.text}#{'%'}#{node.parent.text}"/>
+                                        <af:attributeDragSource attribute="nodeText"/>
+                                    </af:outputText>
+                                </f:facet>
+                            </af:tree>
+                        </af:group>
+                    </f:facet>
+                    <f:facet name="globalLinks"/>
+                    <f:facet name="status">
+                        <af:outputText value="#{bindings.Mensajes.inputValue}" id="ot1" partialTriggers="cb4"
+                                       inlineStyle="font-size:medium;"/>
+                    </f:facet>
+                    <f:facet name="welcome">
+                        <af:group id="g1">
+                            <af:panelHeader text="Caso de Uso" id="ph4">
+                                <af:panelFormLayout id="pgl8">
+                                    <af:inputText label="Nombre" id="it12" value="#{bindings.NombreCU.inputValue}"
+                                                  columns="75"/>
+                                    <af:inputText label="Descripción" id="it10"
+                                                  value="#{bindings.DescripcionCU.inputValue}" columns="75"/>
+                                    <af:inputText label="Pre Condicion" id="it11"
+                                                  value="#{bindings.PrecondicionCU.inputValue}" columns="75"/>
+                                    <af:inputText label="Post Condition" id="ic1"
+                                                  value="#{bindings.PostcondicionCU.inputValue}" columns="75"/>
+                                    <f:facet name="footer"/>
+                                </af:panelFormLayout>
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                            </af:panelHeader>
+                            <af:showDetailHeader text="Flujo Básico" id="ph1" disclosed="true">
+                                <af:panelFormLayout id="pgl1">
+                                    <af:inputText label="Número"
+                                                  id="it1" rows="1" value="#{bindings.NumeroFB.inputValue}" columns="20"
+                                                  shortDesc="Número de paso"/>
+                                    <af:inputText label="Descripción" shortDesc="Descripcion del paso" id="it2" rows="1"
+                                                  value="#{bindings.DescripcionFB.inputValue}" columns="70"/>
+                                    <af:inputText label="Métodos" shortDesc="Metodos asociados al paso" id="it3"
+                                                  rows="2" binding="#{BackingGenCP.metodoFB_InputText}"
+                                                  value="#{bindings.MetodoFB.inputValue}" columns="70"
+                                                  valueChangeListener="#{BackingGenCP.valueChangeMetodosFB}"
+                                                  autoSubmit="true" disabled="true" partialTriggers="d2">
+                                        <af:dropTarget dropListener="#{BackingGenCP.handleItemDrop}">
+                                            <af:dataFlavor flavorClass="java.lang.String"/>
+                                        </af:dropTarget>
+                                        <af:showPopupBehavior triggerType="valueChange" align="afterStart"
+                                                              alignId="it3" popupId="p1"/>
+                                    </af:inputText>
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                                              binding="#{BackingGenCP.popupFB}">
+                                        <af:dialog id="d2" dialogListener="#{BackingGenCP.MetodoFB_dialogListener}"
+                                                   title="#{pageFlowScope.methodName}">
+                                            <af:table value="#{bindings.ValoresDeParametrosView1.collectionModel}"
+                                                      var="row" rows="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                      emptyText="#{bindings.ValoresDeParametrosView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                      rowBandingInterval="0" id="t5" inlineStyle="height:inherit;"
+                                                      width="100%">
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varName.name}"
+                                                           sortable="false" headerText="Nombre" id="c10">
+                                                    <af:outputText value="#{row.varName}" id="ot12"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varType.name}"
+                                                           sortable="false" headerText="Tipo" id="c11">
+                                                    <af:outputText value="#{row.varType}" id="ot13"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varValue.name}"
+                                                           sortable="false" headerText="Valor" id="c12">
+                                                    <af:inputText value="#{row.varValue}" id="ot14" label="Label 3"/>
+                                                </af:column>
+                                            </af:table>
+                                            <f:facet name="buttonBar"/>
+                                        </af:dialog>
+                                    </af:popup>
+                                    <f:facet name="footer">
+                                        <af:commandButton text="Agregar Paso" id="cb1"
+                                                          action="#{BackingGenCP.agregarPasoFlujoBasico}"/>
+                                    </f:facet>
+                                </af:panelFormLayout>
+                                <af:panelGroupLayout id="pgl2" halign="center" inlineStyle="height:inherit;">
+                                    <af:table value="#{bindings.FlujoBasicoView1.collectionModel}" var="row"
+                                              rows="#{bindings.FlujoBasicoView1.rangeSize}"
+                                              emptyText="#{bindings.FlujoBasicoView1.viewable ? 'No hay pasos en este flujo.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.FlujoBasicoView1.rangeSize}" rowBandingInterval="1"
+                                              id="t1" disableColumnReordering="true" summary="Pasos del flujo básico"
+                                              width="95%" inlineStyle="height:inherit;">
+                                        <af:column sortProperty="#{bindings.FlujoBasicoView1.hints.nroPasoFB.name}"
+                                                   sortable="false" headerText="Número" id="c3" width="40">
+                                            <af:outputText value="#{row.nroPasoFB}" id="ot5"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.FlujoBasicoView1.hints.descPasoFB.name}"
+                                                   sortable="false" headerText="Descripción" id="c2" width="400">
+                                            <af:outputText value="#{row.descPasoFB}" id="ot4"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.FlujoBasicoView1.hints.metodosAsocFB.name}"
+                                                   sortable="false" headerText="Métodos Asociados" id="c1" width="400"
+                                                   noWrap="false">
+                                            <af:outputText value="#{row.metodosAsocFB}" id="ot3"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelGroupLayout>
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                            </af:showDetailHeader>
+                            <af:separator id="s1"/>
+                            <af:showDetailHeader text="Flujo Alternativo" id="ph2" disclosed="false">
+                                <af:panelFormLayout id="pgl3">
+                                    <af:inputText label="Número" columns="20" shortDesc="Número de paso" id="it13"
+                                                  rows="1" value="#{bindings.NumeroFA.inputValue}"/>
+                                    <af:inputText label="Descripción" columns="70" shortDesc="Descripción del paso"
+                                                  id="it14" rows="1" value="#{bindings.DescripcionFA.inputValue}"/>
+                                    <af:inputText label="Métodos" columns="70"
+                                                  shortDesc="Metodos Asociados al paso" id="it15" rows="2"
+                                                  binding="#{BackingGenCP.metodoFA_InputText}"
+                                                  value="#{bindings.MetodoFA.inputValue}" partialTriggers="d3"
+                                                  autoSubmit="true" disabled="true"
+                                                  valueChangeListener="#{BackingGenCP.valueChangeMetodosFA}">
+                                        <af:dropTarget dropListener="#{BackingGenCP.handleItemDropFA}">
+                                            <af:dataFlavor flavorClass="java.lang.String"/>
+                                        </af:dropTarget>
+                                        <af:showPopupBehavior triggerType="valueChange" align="afterStart"
+                                                              alignId="it15"
+                                                              popupId="p2"/>
+                                    </af:inputText>
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                                              binding="#{BackingGenCP.popupFA}">
+                                        <af:dialog id="d3" dialogListener="#{BackingGenCP.MetodoFA_dialogListener}"
+                                                   title="#{pageFlowScope.methodName}">
+                                            <af:table value="#{bindings.ValoresDeParametrosView1.collectionModel}"
+                                                      var="row" rows="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                      emptyText="#{bindings.ValoresDeParametrosView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                      rowBandingInterval="0" id="t6" inlineStyle="height:inherit;"
+                                                      width="100%">
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varName.name}"
+                                                           sortable="false" headerText="Nombre" id="c13">
+                                                    <af:outputText value="#{row.varName}" id="ot15"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varType.name}"
+                                                           sortable="false" headerText="Tipo" id="c14">
+                                                    <af:outputText value="#{row.varType}" id="ot16"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varValue.name}"
+                                                           sortable="false" headerText="Valor" id="c15">
+                                                    <af:inputText value="#{row.varValue}" id="it7" label="Label 3"/>
+                                                </af:column>
+                                            </af:table>
+                                            <f:facet name="buttonBar"/>
+                                        </af:dialog>
+                                    </af:popup>
+                                    <f:facet name="footer">
+                                        <af:commandButton text="Agregar Paso" id="cb2"
+                                                          action="#{BackingGenCP.agregarPasoFlujoAlternativo}"/>
+                                    </f:facet>
+                                </af:panelFormLayout>
+                                <af:panelGroupLayout id="pgl4" halign="center" inlineStyle="height:inherit;">
+                                    <af:table value="#{bindings.FlujoAlternativoView1.collectionModel}" var="row"
+                                              rows="#{bindings.FlujoAlternativoView1.rangeSize}"
+                                              emptyText="#{bindings.FlujoAlternativoView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.FlujoAlternativoView1.rangeSize}"
+                                              rowBandingInterval="1"
+                                              selectedRowKeys="#{bindings.FlujoAlternativoView1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.FlujoAlternativoView1.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t2" width="95%" inlineStyle="height:inherit;">
+                                        <af:column sortProperty="#{bindings.FlujoAlternativoView1.hints.nroPasoFA.name}"
+                                                   sortable="false" headerText="Número" id="c4" width="40">
+                                            <af:outputText value="#{row.nroPasoFA}" id="ot6"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.FlujoAlternativoView1.hints.descPasoFA.name}"
+                                                   sortable="false" headerText="Descripción" id="c5" width="400">
+                                            <af:outputText value="#{row.descPasoFA}" id="ot7"/>
+                                        </af:column>
+                                        <af:column
+                                                   sortable="false" headerText="Métodos Asociados" id="c6" width="400">
+                                            <af:outputText value="#{row.metodosAsocFA}" id="ot8"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelGroupLayout>
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                            </af:showDetailHeader>
+                            <af:separator id="s4"/>
+                            <af:showDetailHeader text="Flujo de Error" id="ph3" disclosed="false">
+                                <af:panelFormLayout id="pgl5">
+                                    <af:inputText
+                                                  label="Número"
+                                                  
+                                                  columns="20"
+                                                  
+                                                  shortDesc="Número de paso"
+                                                  id="it6" rows="1" value="#{bindings.NumeroFE.inputValue}"/>
+                                    <af:inputText
+                                                  label="Descripción"
+                                                  required="#{bindings.FlujoErrorView1.hints.descPasoFE.mandatory}"
+                                                  columns="70"
+                                                  maximumLength="#{bindings.FlujoErrorView1.hints.descPasoFE.precision}"
+                                                  shortDesc="Descripción de paso"
+                                                  id="it5" rows="1" value="#{bindings.DescripcionFE.inputValue}"/>
+                                    <af:inputText
+                                                  label="Métodos"
+                                                  columns="70"
+                                                  shortDesc="Métodos Asociados al paso"
+                                                  id="it4" rows="2" binding="#{BackingGenCP.metodoFE_InputText}"
+                                                  value="#{bindings.MetodoFE.inputValue}" disabled="true"
+                                                  autoSubmit="true"
+                                                  valueChangeListener="#{BackingGenCP.valueChangeMetodosFE}"
+                                                  partialTriggers="d4">
+                                        <af:dropTarget dropListener="#{BackingGenCP.handleItemDropFE}">
+                                            <af:dataFlavor flavorClass="java.lang.String"/>
+                                        </af:dropTarget>
+                                        <af:showPopupBehavior triggerType="valueChange" align="afterStart" alignId="it4"
+                                                              popupId="p3"/>
+                                    </af:inputText>
+                                    <af:popup childCreation="deferred" autoCancel="disabled" id="p3"
+                                              binding="#{BackingGenCP.popupFE}">
+                                        <af:dialog id="d4" dialogListener="#{BackingGenCP.MetodoFE_dialogListener}"
+                                                   title="#{pageFlowScope.methodName}">
+                                            <af:table value="#{bindings.ValoresDeParametrosView1.collectionModel}"
+                                                      var="row" rows="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                      emptyText="#{bindings.ValoresDeParametrosView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      fetchSize="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                      rowBandingInterval="0" id="t7" inlineStyle="height:inherit;"
+                                                      width="100%">
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varName.name}"
+                                                           sortable="false" headerText="Nombre" id="c16">
+                                                    <af:outputText value="#{row.varName}" id="ot17"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varType.name}"
+                                                           sortable="false" headerText="Tipo" id="c17">
+                                                    <af:outputText value="#{row.varType}" id="ot18"/>
+                                                </af:column>
+                                                <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varValue.name}"
+                                                           sortable="false" headerText="Valor" id="c18">
+                                                    <af:inputText value="#{row.varValue}" id="it8" label="Label 3"/>
+                                                </af:column>
+                                            </af:table>
+                                            <f:facet name="buttonBar"/>
+                                        </af:dialog>
+                                    </af:popup>
+                                    <f:facet name="footer">
+                                        <af:commandButton text="Agregar Paso" id="cb3"
+                                                          action="#{BackingGenCP.agregarPasoFlujoError}"/>
+                                    </f:facet>
+                                </af:panelFormLayout>
+                                <af:panelGroupLayout id="pgl6" inlineStyle="height:inherit;">
+                                    <af:table value="#{bindings.FlujoErrorView1.collectionModel}" var="row"
+                                              rows="#{bindings.FlujoErrorView1.rangeSize}"
+                                              emptyText="#{bindings.FlujoErrorView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              fetchSize="#{bindings.FlujoErrorView1.rangeSize}" rowBandingInterval="1"
+                                              selectedRowKeys="#{bindings.FlujoErrorView1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.FlujoErrorView1.collectionModel.makeCurrent}"
+                                              rowSelection="single" id="t3" width="95%" inlineStyle="height:inherit;">
+                                        <af:column sortProperty="#{bindings.FlujoErrorView1.hints.nroPasoFE.name}"
+                                                   sortable="false" headerText="Número" id="c7" width="40">
+                                            <af:outputText value="#{row.nroPasoFE}" id="ot9"/>
+                                        </af:column>
+                                        <af:column sortProperty="#{bindings.FlujoErrorView1.hints.descPasoFE.name}"
+                                                   sortable="false" headerText="Descripción" id="c8" width="400">
+                                            <af:outputText value="#{row.descPasoFE}" id="ot10"/>
+                                        </af:column>
+                                        <af:column
+                                                   sortable="false" headerText="Métodos Asociados" id="c9" width="400">
+                                            <af:outputText value="#{row.metodosAsocFE}" id="ot11"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelGroupLayout>
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                            </af:showDetailHeader>
+                            <af:panelGroupLayout id="pgl7">
+                                <af:commandButton text="Generar Secuencia" id="cb4"
+                                                  action="#{BackingGenCP.generarSecuencia}" partialSubmit="true"/>
+                            </af:panelGroupLayout>
+                        </af:group>
+                    </f:facet>
+                    <f:attribute name="brandingTitle" value="Generador de Casos de Prueba"/>
+                    <f:attribute name="navSplitterPosition" value="400"/>
+                    <f:attribute name="headerSplitterPosition" value="30"/>
+                    <f:attribute name="legalAreaPosition" value="3"/>
+                    <f:attribute name="globalAreaSplitterPosition" value="0"/>
+                    <f:attribute name="statusWidth" value="200px"/>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

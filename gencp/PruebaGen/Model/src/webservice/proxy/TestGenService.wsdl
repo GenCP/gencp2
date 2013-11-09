@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<WL5G3N0:definitions name="TestGenService" targetNamespace="http://appws/" xmlns="" xmlns:WL5G3N0="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N1="http://appws/" xmlns:WL5G3N2="http://schemas.xmlsoap.org/wsdl/soap/">
+  <WL5G3N0:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://appws/" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:conv="http://www.openuri.org/2002/04/wsdl/conversation/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://appws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <xsd:element name="generarActivityDiagram" type="tns:generarActivityDiagram"/>
+      <xsd:complexType name="generarActivityDiagram">
+        <xsd:sequence>
+          <xsd:element name="templateFile" nillable="true" type="string"/>
+          <xsd:element name="activityDiagramFile" nillable="true" type="string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="generarActivityDiagramResponse" type="tns:generarActivityDiagramResponse"/>
+      <xsd:complexType name="generarActivityDiagramResponse">
+        <xsd:sequence>
+          <xsd:element name="return" nillable="true" type="string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="generarSecuencias" type="tns:generarSecuencias"/>
+      <xsd:complexType name="generarSecuencias">
+        <xsd:sequence>
+          <xsd:element name="templateFile" nillable="true" type="string"/>
+          <xsd:element name="testObjectiveFile" nillable="true" type="string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="generarSecuenciasResponse" type="tns:generarSecuenciasResponse"/>
+      <xsd:complexType name="generarSecuenciasResponse">
+        <xsd:sequence>
+          <xsd:element name="return" nillable="true" type="string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </WL5G3N0:types>
+  <WL5G3N0:message name="TestGenPortType_generarActivityDiagram">
+    <WL5G3N0:part element="WL5G3N1:generarActivityDiagram" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TestGenPortType_generarActivityDiagramResponse">
+    <WL5G3N0:part element="WL5G3N1:generarActivityDiagramResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TestGenPortType_generarSecuencias">
+    <WL5G3N0:part element="WL5G3N1:generarSecuencias" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:message name="TestGenPortType_generarSecuenciasResponse">
+    <WL5G3N0:part element="WL5G3N1:generarSecuenciasResponse" name="parameters"/>
+  </WL5G3N0:message>
+  <WL5G3N0:portType name="TestGen">
+    <WL5G3N0:operation name="generarActivityDiagram">
+      <WL5G3N0:input message="WL5G3N1:TestGenPortType_generarActivityDiagram"/>
+      <WL5G3N0:output message="WL5G3N1:TestGenPortType_generarActivityDiagramResponse"/>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="generarSecuencias">
+      <WL5G3N0:input message="WL5G3N1:TestGenPortType_generarSecuencias"/>
+      <WL5G3N0:output message="WL5G3N1:TestGenPortType_generarSecuenciasResponse"/>
+    </WL5G3N0:operation>
+  </WL5G3N0:portType>
+  <WL5G3N0:binding name="TestGen" type="WL5G3N1:TestGen">
+    <WL5G3N2:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <WL5G3N0:operation name="generarActivityDiagram">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+    <WL5G3N0:operation name="generarSecuencias">
+      <WL5G3N2:operation/>
+      <WL5G3N0:input>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:input>
+      <WL5G3N0:output>
+        <WL5G3N2:body use="literal"/>
+      </WL5G3N0:output>
+    </WL5G3N0:operation>
+  </WL5G3N0:binding>
+  <WL5G3N0:service name="TestGenService">
+    <WL5G3N0:port binding="WL5G3N1:TestGen" name="TestGenPort">
+      <WL5G3N2:address location="http://127.0.0.1:7101/AppWS/TestGenPort"/>
+    </WL5G3N0:port>
+  </WL5G3N0:service>
+</WL5G3N0:definitions>

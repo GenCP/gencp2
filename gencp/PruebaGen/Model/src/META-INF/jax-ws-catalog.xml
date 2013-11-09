@@ -1,0 +1,4 @@
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <system systemId="http://127.0.0.1:7101/AppWS/TestGenPort?WSDL#%7Bhttp%3A%2F%2Fappws%2F%7DTestGenService"
+          uri="../webservice/proxy/TestGenService.wsdl"/>
+</catalog>

@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:h="http://java.sun.com/jsf/html">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="untitled1.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:panelGroupLayout id="pgl1" layout="vertical">
+                    <af:panelBox id="pb1" showDisclosure="false" text="First 6 employees in range">
+                        <af:panelGroupLayout id="pgl4" layout="scroll" inlineStyle="margin-top:20px;margin-right:20px;">
+                            <h:panelGrid columns="2" id="pg1">
+                                <af:outputText value="outputText1" id="ot9">
+                                    <af:componentDragSource/>
+                                </af:outputText>
+                                <af:outputText value="outputText6" id="ot2">
+                                    <af:componentDragSource/>
+                                </af:outputText>
+                            </h:panelGrid>
+                            <af:dropTarget dropListener="#{BackingGenCP.handleDnDEvent}" actions="MOVE">
+                                <af:dataFlavor flavorClass="javax.faces.component.UIComponent"/>
+                            </af:dropTarget>
+                        </af:panelGroupLayout>
+                    </af:panelBox>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl2">
+                    <af:panelBox id="pb2" showDisclosure="false" text="Last 6 employees in range">
+                        <af:panelGroupLayout id="pgl3" layout="scroll" inlineStyle="margin-top:20px;margin-right:20px;">
+                            <af:panelFormLayout id="pfl1" rows="1" maxColumns="2"
+                                                binding="#{BackingGenCP.panelformlayout}">
+                                <af:inputText label="Label 1" id="it1" binding="#{BackingGenCP.prueba_inputText}"
+                                              valueChangeListener="#{BackingGenCP.valueChangePrueba}"
+                                              partialTriggers="d2">
+                                    <af:dropTarget dropListener="#{BackingGenCP.handleDnDEvent}" actions="MOVE">
+                                        <af:dataFlavor flavorClass="javax.faces.component.UIComponent"/>
+                                    </af:dropTarget>
+                                    <af:showPopupBehavior triggerType="valueChange" align="afterStart" alignId="it1"
+                                                          popupId="p1"/>
+                                </af:inputText>
+                                <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                                          contentDelivery="lazyUncached" binding="#{BackingGenCP.popupFB}">
+                                    <af:dialog id="d2" dialogListener="#{BackingGenCP.pruebaDialogListener}">
+                                        <af:table value="#{bindings.ValoresDeParametrosView1.collectionModel}" var="row"
+                                                  rows="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                  emptyText="#{bindings.ValoresDeParametrosView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  fetchSize="#{bindings.ValoresDeParametrosView1.rangeSize}"
+                                                  rowBandingInterval="0" id="t1" width="100%"
+                                                  inlineStyle="height:inherit;">
+                                            <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varName.name}"
+                                                       sortable="false"
+                                                       headerText="#{bindings.ValoresDeParametrosView1.hints.varName.label}"
+                                                       id="c1" inlineStyle="height:inherit; width:inherit;">
+                                                <af:outputText value="#{row.varName}" id="ot3"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varType.name}"
+                                                       sortable="false"
+                                                       headerText="#{bindings.ValoresDeParametrosView1.hints.varType.label}"
+                                                       id="c2" inlineStyle="height:inherit;">
+                                                <af:outputText value="#{row.varType}" id="ot4"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.varValue.name}"
+                                                       sortable="false"
+                                                       headerText="#{bindings.ValoresDeParametrosView1.hints.varValue.label}"
+                                                       id="c3" inlineStyle="height:inherit; width:inherit;">
+                                                <af:outputText value="#{row.varValue}" id="ot5"/>
+                                            </af:column>
+                                            <af:column sortProperty="#{bindings.ValoresDeParametrosView1.hints.avl.name}"
+                                                       sortable="false"
+                                                       headerText="#{bindings.ValoresDeParametrosView1.hints.avl.label}"
+                                                       id="c4" inlineStyle="height:inherit; width:inherit;">
+                                                <af:outputText value="#{row.avl}" id="ot6"/>
+                                            </af:column>
+                                        </af:table>
+                                        <f:facet name="buttonBar"/>
+                                    </af:dialog>
+                                </af:popup>
+                                <af:outputText value="outputText5" id="ot1">
+                                    <af:componentDragSource/>
+                                </af:outputText>
+                            </af:panelFormLayout>
+                        </af:panelGroupLayout>
+                    </af:panelBox>
+                </af:panelGroupLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

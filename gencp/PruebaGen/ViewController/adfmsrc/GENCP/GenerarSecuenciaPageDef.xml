@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.17" id="GenerarSecuenciaPageDef"
+                Package="GENCP">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="vDescripcionCU" Type="String"/>
+      <variable Name="vPostcondicionCU" Type="String"/>
+      <variable Name="vPrecondicionCU" Type="String"/>
+      <variable Name="vNombreCU" Type="String"/>
+      <variable Name="vMensajes" Type="String"/>
+      <variable Name="vUbicacionPlantilla" Type="String"/>
+      <variable Name="vNombreProyecto" Type="String" DefaultValue="${pageFlowScope.nombreProyecto}"/>
+      <variable Name="vNumeroFB" Type="String" DefaultValue="${pageFlowScope.nroPasoFB==null ? '1' : pageFlowScope.nroPasoFB}"/>
+      <variable Name="vDescripcionFB" Type="String"/>
+      <variable Name="vMetodoFB" Type="String"/>
+      <variable Name="vNumeroFA" Type="String"/>
+      <variable Name="vDescripcionFA" Type="String"/>
+      <variable Name="vMetodoFA" Type="String"/>
+      <variable Name="vNumeroFE" Type="String"/>
+      <variable Name="vDescripcionFE" Type="String"/>
+      <variable Name="vMetodoFE" Type="String"/>
+    </variableIterator>
+    <page path="oracle.ui.pattern.dynamicShell.model.dynamicTabShellDefinition" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="FlujoBasicoView1" RangeSize="25" DataControl="AppMoGenCPDataControl"
+              id="FlujoBasicoView1Iterator"/>
+    <iterator Binds="FlujoAlternativoView1" RangeSize="25" DataControl="AppMoGenCPDataControl"
+              id="FlujoAlternativoView1Iterator"/>
+    <iterator Binds="FlujoErrorView1" RangeSize="25" DataControl="AppMoGenCPDataControl" id="FlujoErrorView1Iterator"/>
+    <iterator Binds="ValoresDeParametrosView1" RangeSize="25" DataControl="AppMoGenCPDataControl"
+              id="ValoresDeParametrosView1Iterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="FlujoBasicoView1Iterator" id="CreateFlujoBasico" InstanceName="AppMoGenCPDataControl.FlujoBasicoView1"
+            DataControl="AppMoGenCPDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="FlujoAlternativoView1Iterator" id="FlujoAlternativoView1">
+      <nodeDefinition DefName="model.view.FlujoAlternativoView" Name="FlujoAlternativoView10">
+        <AttrNames>
+          <Item Value="nroPasoFA"/>
+          <Item Value="descPasoFA"/>
+          <Item Value="metodosAsocFA"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="FlujoErrorView1Iterator" id="FlujoErrorView1">
+      <nodeDefinition DefName="model.view.FlujoErrorView" Name="FlujoErrorView10">
+        <AttrNames>
+          <Item Value="nroPasoFE"/>
+          <Item Value="descPasoFE"/>
+          <Item Value="metodosAsocFE"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="variables" id="DescripcionCU">
+      <AttrNames>
+        <Item Value="vDescripcionCU"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="PostcondicionCU">
+      <AttrNames>
+        <Item Value="vPostcondicionCU"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="PrecondicionCU">
+      <AttrNames>
+        <Item Value="vPrecondicionCU"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="NombreCU">
+      <AttrNames>
+        <Item Value="vNombreCU"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="Mensajes">
+      <AttrNames>
+        <Item Value="vMensajes"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="NumeroFB">
+      <AttrNames>
+        <Item Value="vNumeroFB"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="DescripcionFB">
+      <AttrNames>
+        <Item Value="vDescripcionFB"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="MetodoFB">
+      <AttrNames>
+        <Item Value="vMetodoFB"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="FlujoBasicoView1Iterator" id="FlujoBasicoView1">
+      <nodeDefinition DefName="model.view.FlujoBasicoView" Name="FlujoBasicoView110">
+        <AttrNames>
+          <Item Value="nroPasoFB"/>
+          <Item Value="descPasoFB"/>
+          <Item Value="metodosAsocFB"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="variables" id="NumeroFA">
+      <AttrNames>
+        <Item Value="vNumeroFA"/>
+      </AttrNames>
+    </attributeValues>
+<attributeValues IterBinding="variables" id="MetodoFA">
+      <AttrNames>
+        <Item Value="vMetodoFA"/>
+      </AttrNames>
+    </attributeValues>
+<attributeValues IterBinding="variables" id="DescripcionFA">
+      <AttrNames>
+        <Item Value="vDescripcionFA"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="DescripcionFE">
+      <AttrNames>
+        <Item Value="vDescripcionFE"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="MetodoFE">
+      <AttrNames>
+        <Item Value="vMetodoFE"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="NumeroFE">
+      <AttrNames>
+        <Item Value="vNumeroFE"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ValoresDeParametrosView1Iterator" id="ValoresDeParametrosView1">
+      <nodeDefinition DefName="model.view.ValoresDeParametrosView" Name="ValoresDeParametrosView10">
+        <AttrNames>
+          <Item Value="varName"/>
+          <Item Value="varType"/>
+          <Item Value="varValue"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ValoresDeParametrosView1Iterator" id="LimpiarValoresDeParametros"
+            InstanceName="AppMoGenCPDataControl.ValoresDeParametrosView1" DataControl="AppMoGenCPDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

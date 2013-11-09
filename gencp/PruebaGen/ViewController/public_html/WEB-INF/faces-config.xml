@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee">
+    <application>
+        <default-render-kit-id>oracle.adf.rich</default-render-kit-id>
+    </application>
+    <managed-bean>
+        <managed-bean-name>BackingGenCP</managed-bean-name>
+        <managed-bean-class>view.Backing.BackingGenCP</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>bindings</property-name>
+            <value>#{bindings}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>treeModel</managed-bean-name>
+        <managed-bean-class>view.bean.TreeModelAdapter</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <navigation-rule>
+        <from-view-id>/GENCP/GenerarSecuencia.jspx</from-view-id>
+        <navigation-case>
+            <from-outcome>generarTO</from-outcome>
+            <to-view-id>/GENCP/GenerarTestObjectives.jspx</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/GENCP/CargarDiagramaDeClases.jspx</from-view-id>
+        <navigation-case>
+            <from-outcome>generarSec</from-outcome>
+            <to-view-id>/GENCP/GenerarSecuencia.jspx</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

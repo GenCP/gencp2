@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.17" id="untitled1PageDef"
+                Package="GENCP">
+  <parameters/>
+  <executables>
+    <iterator Binds="ValoresDeParametrosView1" RangeSize="25" DataControl="AppMoGenCPDataControl"
+              id="ValoresDeParametrosView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ValoresDeParametrosView1Iterator" id="ValoresDeParametrosView1">
+      <nodeDefinition DefName="model.view.ValoresDeParametrosView" Name="ValoresDeParametrosView10">
+        <AttrNames>
+          <Item Value="varName"/>
+          <Item Value="varType"/>
+          <Item Value="varValue"/>
+          <Item Value="avl"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

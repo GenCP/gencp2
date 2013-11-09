@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java-wsdl-mapping xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee   http://www.ibm.com/webservices/xsd/j2ee_jaxrpc_mapping_1_1.xsd"
+                   version="1.1">
+    <package-mapping>
+        <package-type>appws</package-type>
+        <namespaceURI>http://appws/</namespaceURI>
+    </package-mapping>
+    <java-xml-type-mapping>
+        <java-type>appws.GenerarActivityDiagramResponse</java-type>
+        <root-type-qname xmlns:typeNS="http://appws/">typeNS:generarActivityDiagramResponse</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>appws.GenerarSecuenciasResponse</java-type>
+        <root-type-qname xmlns:typeNS="http://appws/">typeNS:generarSecuenciasResponse</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>_return</java-variable-name>
+            <xml-element-name>return</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>appws.GenerarActivityDiagram</java-type>
+        <root-type-qname xmlns:typeNS="http://appws/">typeNS:generarActivityDiagram</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>templateFile</java-variable-name>
+            <xml-element-name>templateFile</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>activityDiagramFile</java-variable-name>
+            <xml-element-name>activityDiagramFile</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <java-xml-type-mapping>
+        <java-type>appws.GenerarSecuencias</java-type>
+        <root-type-qname xmlns:typeNS="http://appws/">typeNS:generarSecuencias</root-type-qname>
+        <qname-scope>complexType</qname-scope>
+        <variable-mapping>
+            <java-variable-name>templateFile</java-variable-name>
+            <xml-element-name>templateFile</xml-element-name>
+        </variable-mapping>
+        <variable-mapping>
+            <java-variable-name>testObjectiveFile</java-variable-name>
+            <xml-element-name>testObjectiveFile</xml-element-name>
+        </variable-mapping>
+    </java-xml-type-mapping>
+    <service-interface-mapping>
+        <service-interface>appws.TestGenService</service-interface>
+        <wsdl-service-name xmlns:serviceNS="http://appws/">serviceNS:TestGenService</wsdl-service-name>
+        <port-mapping>
+            <port-name>TestGenPort</port-name>
+            <java-port-name>TestGenPort</java-port-name>
+        </port-mapping>
+    </service-interface-mapping>
+    <service-endpoint-interface-mapping>
+        <service-endpoint-interface>appws.TestGenPortType</service-endpoint-interface>
+        <wsdl-port-type xmlns:portTypeNS="http://appws/">portTypeNS:TestGen</wsdl-port-type>
+        <wsdl-binding xmlns:bindingNS="http://appws/">bindingNS:TestGen</wsdl-binding>
+        <service-endpoint-method-mapping>
+            <java-method-name>generarActivityDiagram</java-method-name>
+            <wsdl-operation>generarActivityDiagram</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="http://appws/">wsdlMsgNS:TestGenPortType_generarActivityDiagram</wsdl-message>
+                    <wsdl-message-part-name>templateFile</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="http://appws/">wsdlMsgNS:TestGenPortType_generarActivityDiagram</wsdl-message>
+                    <wsdl-message-part-name>activityDiagramFile</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wsdlMsgNS="http://appws/">wsdlMsgNS:TestGenPortType_generarActivityDiagramResponse</wsdl-message>
+                <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+        <service-endpoint-method-mapping>
+            <java-method-name>generarSecuencias</java-method-name>
+            <wsdl-operation>generarSecuencias</wsdl-operation>
+            <wrapped-element/>
+            <method-param-parts-mapping>
+                <param-position>0</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="http://appws/">wsdlMsgNS:TestGenPortType_generarSecuencias</wsdl-message>
+                    <wsdl-message-part-name>templateFile</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <method-param-parts-mapping>
+                <param-position>1</param-position>
+                <param-type>java.lang.String</param-type>
+                <wsdl-message-mapping>
+                    <wsdl-message xmlns:wsdlMsgNS="http://appws/">wsdlMsgNS:TestGenPortType_generarSecuencias</wsdl-message>
+                    <wsdl-message-part-name>testObjectiveFile</wsdl-message-part-name>
+                    <parameter-mode>IN</parameter-mode>
+                </wsdl-message-mapping>
+            </method-param-parts-mapping>
+            <wsdl-return-value-mapping>
+                <method-return-value>java.lang.String</method-return-value>
+                <wsdl-message xmlns:wsdlMsgNS="http://appws/">wsdlMsgNS:TestGenPortType_generarSecuenciasResponse</wsdl-message>
+                <wsdl-message-part-name>return</wsdl-message-part-name>
+            </wsdl-return-value-mapping>
+        </service-endpoint-method-mapping>
+    </service-endpoint-interface-mapping>
+</java-wsdl-mapping>
+

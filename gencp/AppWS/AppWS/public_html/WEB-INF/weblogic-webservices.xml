@@ -1,0 +1,13 @@
+<weblogic-webservices xmlns="http://xmlns.oracle.com/weblogic/weblogic-webservices">
+  <webservice-description>
+    <webservice-description-name>TestGenService</webservice-description-name>
+    <webservice-type>JAXRPC</webservice-type>
+    <port-component>
+      <port-component-name>TestGenPort</port-component-name>
+      <service-endpoint-address>
+        <webservice-contextpath>AppWS</webservice-contextpath>
+        <webservice-serviceuri>/TestGenPort</webservice-serviceuri>
+      </service-endpoint-address>
+    </port-component>
+  </webservice-description>
+</weblogic-webservices>

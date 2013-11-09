@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="webservice.AppMoWebService">
+      <AppModuleConfig name="AppMoWebServiceLocal" DeployPlatform="LOCAL" jbo.project="model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="webservice.AppMoWebService">
+         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="webservice.AppMoWebService"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/Connection1DS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AppMoWebServiceShared" DeployPlatform="LOCAL" jbo.project="model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="webservice.AppMoWebService">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="webservice.AppMoWebService"/>
+         <Custom JDBCDataSource="java:comp/env/jdbc/Connection1DS"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

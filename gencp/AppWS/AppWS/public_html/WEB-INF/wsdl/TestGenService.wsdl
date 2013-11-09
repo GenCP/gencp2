@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="TestGenService"
+     targetNamespace="http://appws/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://appws/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+    xmlns="http://www.w3.org/2001/XMLSchema" xmlns:conv="http://www.openuri.org/2002/04/wsdl/conversation/">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://appws/" elementFormDefault="qualified"
+             xmlns:tns="http://appws/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/">
+            <element name="generarActivityDiagram" type="tns:generarActivityDiagram"/>
+            <complexType name="generarActivityDiagram">
+                <sequence>
+                    <element name="templateFile" type="string" nillable="true"/>
+                    <element name="activityDiagramFile" type="string" nillable="true"/>
+                </sequence>
+            </complexType>
+            <element name="generarActivityDiagramResponse" type="tns:generarActivityDiagramResponse"/>
+            <complexType name="generarActivityDiagramResponse">
+                <sequence>
+                    <element name="return" type="string" nillable="true"/>
+                </sequence>
+            </complexType>
+            <element name="generarSecuencias" type="tns:generarSecuencias"/>
+            <complexType name="generarSecuencias">
+                <sequence>
+                    <element name="templateFile" type="string" nillable="true"/>
+                    <element name="testObjectiveFile" type="string" nillable="true"/>
+                </sequence>
+            </complexType>
+            <element name="generarSecuenciasResponse" type="tns:generarSecuenciasResponse"/>
+            <complexType name="generarSecuenciasResponse">
+                <sequence>
+                    <element name="return" type="string" nillable="true"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="TestGenPortType_generarActivityDiagram">
+        <wsdl:part name="parameters" element="tns:generarActivityDiagram"/>
+    </wsdl:message>
+    <wsdl:message name="TestGenPortType_generarActivityDiagramResponse">
+        <wsdl:part name="parameters" element="tns:generarActivityDiagramResponse"/>
+    </wsdl:message>
+    <wsdl:message name="TestGenPortType_generarSecuencias">
+        <wsdl:part name="parameters" element="tns:generarSecuencias"/>
+    </wsdl:message>
+    <wsdl:message name="TestGenPortType_generarSecuenciasResponse">
+        <wsdl:part name="parameters" element="tns:generarSecuenciasResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="TestGen">
+        <wsdl:operation name="generarActivityDiagram">
+            <wsdl:input message="tns:TestGenPortType_generarActivityDiagram"/>
+            <wsdl:output message="tns:TestGenPortType_generarActivityDiagramResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="generarSecuencias">
+            <wsdl:input message="tns:TestGenPortType_generarSecuencias"/>
+            <wsdl:output message="tns:TestGenPortType_generarSecuenciasResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="TestGen" type="tns:TestGen">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="generarActivityDiagram">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="generarSecuencias">
+            <soap:operation soapAction=""/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="TestGenService">
+        <wsdl:port name="TestGenPort" binding="tns:TestGen">
+            <soap:address location="http://localhost:7101/AppWS/TestGenPort"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

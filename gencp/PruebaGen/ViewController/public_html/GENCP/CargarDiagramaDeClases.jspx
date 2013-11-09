@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1" usesUpload="true">
+                <af:pageTemplate viewId="/oracle/ui/pattern/dynamicShell/dynamicTabShell.jspx" id="pt1"
+                                 value="#{bindings.ptb1}">
+                    <f:facet name="navigation">
+                        <af:group id="g3">
+                            <af:showDetailHeader text="Tareas Disponibles" disclosed="true" id="sdh1"
+                                                 inlineStyle="margin:8.0pt; list-style-image:none; list-style-type:circle;"
+                                                 size="1">
+                                <f:facet name="context"/>
+                                <f:facet name="menuBar"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="legend"/>
+                                <f:facet name="info"/>
+                                <af:panelList id="g2" maxColumns="2">
+                                    <af:commandLink text="Crear Proyecto" id="cl1" partialSubmit="true"
+                                                    inlineStyle="text-decoration:none;">
+                                        <af:setActionListener from="#{true}" to="#{pageFlowScope.CrearProy}"/>
+                                        <af:spacer width="450" height="2" id="s1"/>
+                                    </af:commandLink>
+                                    <af:commandLink text="Abrir Proyecto" id="cl2" partialSubmit="true">
+                                        <af:setActionListener from="#{false}" to="#{pageFlowScope.CrearProy}"/>
+                                        <af:setActionListener from="#{'NO'}" to="#{pageFlowScope.arbolModelo}"/>
+                                    </af:commandLink>
+                                </af:panelList>
+                            </af:showDetailHeader>
+                        </af:group>
+                    </f:facet>
+                    <f:facet name="globalLinks"/>
+                    <f:facet name="status">
+                        <af:outputText value="#{bindings.Mensajes.inputValue}" id="ot1" partialTriggers="cb4"
+                                       inlineStyle="font-size:medium;"/>
+                    </f:facet>
+                    <f:facet name="welcome">
+                        <af:group id="g1">
+                            <af:panelFormLayout id="pfl1" partialTriggers="cl1 cl2">
+                                <f:facet name="footer"/>
+                                <af:panelHeader text="Crear Proyecto" id="ph4"
+                                                rendered="#{pageFlowScope.CrearProy== null ? false : (pageFlowScope.CrearProy== false ? false : true)}">
+                                    <f:facet name="context"/>
+                                    <f:facet name="menuBar"/>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="info"/>
+                                    <af:panelFormLayout id="pfl2" labelAlignment="start">
+                                        <af:inputText label="Nombre del Proyecto" id="it1" columns="60"
+                                                      value="#{bindings.NombreProyecto.inputValue}"/>
+                                        <af:inputFile label="Ubicación del Archivo (xmi)" id="if1"
+                                                      binding="#{BackingGenCP.inputFile}" columns="90"
+                                                      value="#{BackingGenCP.uploadedFile}"/>
+                                        <af:commandButton text="Cargar Plantilla" id="cb1"
+                                                          action="#{BackingGenCP.crearProyecto}">
+                                            <af:setActionListener from="#{'SI'}" to="#{pageFlowScope.arbolModelo}"/>
+                                        </af:commandButton>
+                                        <f:facet name="footer"/>
+                                    </af:panelFormLayout>
+                                </af:panelHeader>
+                                <af:panelHeader id="pgl7" text="Abrir Proyecto"
+                                                rendered="#{pageFlowScope.CrearProy == null ? false : (pageFlowScope.CrearProy == true ? false : true)}">
+                                    <af:panelGroupLayout id="pgl1">
+                                        <af:tree id="t1" var="node" value="#{treeModel.modelProyectos}">
+                                            <f:facet name="nodeStamp">
+                                                <af:selectBooleanRadio text="#{node.text}" id="gl1"
+                                                                       label="#{node.text}" selected="true"/>
+                                            </f:facet>
+                                        </af:tree>
+                                    </af:panelGroupLayout>
+                                    <af:commandButton text="Cargar Plantilla" id="cb4"
+                                                      partialSubmit="true">
+                                        <af:setActionListener from="#{'SI'}" to="#{pageFlowScope.arbolModelo}"/>
+                                    </af:commandButton>
+                                    <f:facet name="context"/>
+                                    <f:facet name="menuBar"/>
+                                    <f:facet name="toolbar"/>
+                                    <f:facet name="legend"/>
+                                    <f:facet name="info"/>
+                                </af:panelHeader>
+                            </af:panelFormLayout>
+                        </af:group>
+                    </f:facet>
+                    <f:attribute name="brandingTitle" value="Generador de Casos de Prueba"/>
+                    <f:attribute name="navSplitterPosition" value="400"/>
+                    <f:attribute name="headerSplitterPosition" value="30"/>
+                    <f:attribute name="legalAreaPosition" value="3"/>
+                    <f:attribute name="globalAreaSplitterPosition" value="0"/>
+                    <f:attribute name="statusWidth" value="200px"/>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.60.17" id="CargarDiagramaDeClasesPageDef"
+                Package="GENCP">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Name="vNombreProyecto" Type="String"/>
+      <variable Name="vMensajes" Type="String"/>
+    </variableIterator>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="variables" id="NombreProyecto">
+      <AttrNames>
+        <Item Value="vNombreProyecto"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="Mensajes">
+      <AttrNames>
+        <Item Value="vMensajes"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

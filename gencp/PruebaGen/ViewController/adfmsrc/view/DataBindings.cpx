@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.60.17" id="DataBindings"
+             SeparateXMLFiles="false" Package="view" ClientType="Generic">
+  <pageMap>
+    <page path="/GENCP/GenerarSecuencia.jspx" usageId="view_GenerarSecuenciaPageDef"/>
+    <page path="/GENCP/GenerarTestObjectives.jspx" usageId="view_GenerarTestObjectivesPageDef"/>
+    <page path="/GENCP/CargarDiagramaDeClases.jspx" usageId="view_CargarDiagramaDeClasesPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_GenerarSecuenciaPageDef" path="GENCP.GenerarSecuenciaPageDef"/>
+    <page id="view_GenerarDiagramaActividadesPageDef" path="GENCP.GenerarDiagramaActividadesPageDef"/>
+    <page id="view_GenerarTestObjectivesPageDef" path="GENCP.GenerarTestObjectivesPageDef"/>
+    <page id="view_CargarDiagramaDeClasesPageDef" path="GENCP.CargarDiagramaDeClasesPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppMoGenCPDataControl" Package="model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppMoGenCPLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

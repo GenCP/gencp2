@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <Page
+      id="Page2">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">85.896484</property>
+      <property
+         name="x">108.0</property>
+      <property
+         name="jspName">/GENCP/GenerarSecuencia.jspx</property>
+   </Page>
+   <Page
+      id="Page3">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">80.59766</property>
+      <property
+         name="x">424.0</property>
+      <property
+         name="jspName">/GENCP/GenerarTestObjectives.jspx</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase5"
+      from="Page2"
+      to="Page3">
+      <property
+         name="fromOutcome">generarTO</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">R46,149.0,82.0459,383.0,80.24707,L50</property>
+   </NavigationCase>
+   <Page
+      id="Page5">
+      <property
+         name="wildcard">false</property>
+      <property
+         name="y">233.59766</property>
+      <property
+         name="x">495.0</property>
+      <property
+         name="jspName">/GENCP/CargarDiagramaDeClases.jspx</property>
+   </Page>
+   <NavigationCase
+      islink="true"
+      id="NavigationCase6"
+      from="Page5"
+      to="Page2">
+      <property
+         name="fromOutcome">generarSec</property>
+      <property
+         name="description">Navigation Case</property>
+      <property
+         name="sdm:polyPoints">L50,454.0,233.24707,149.0,89.0459,R54</property>
+   </NavigationCase>
+</SDM>

@@ -1,0 +1,19 @@
+<webservices xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://www.ibm.com/webservices/xsd/j2ee_web_services_1_1.xsd"
+             version="1.1">
+    <webservice-description>
+        <webservice-description-name>TestGenService</webservice-description-name>
+        <wsdl-file>WEB-INF/wsdl/TestGenService.wsdl</wsdl-file>
+        <jaxrpc-mapping-file>WEB-INF/TestGenService-java-wsdl-mapping.xml</jaxrpc-mapping-file>
+        <port-component>
+            <port-component-name>TestGenPort</port-component-name>
+            <wsdl-port xmlns:wsa0="http://appws/">wsa0:TestGenPort</wsdl-port>
+            <service-endpoint-interface>appws.TestGenPortType</service-endpoint-interface>
+            <service-impl-bean>
+                <servlet-link>TestGenPort</servlet-link>
+            </service-impl-bean>
+        </port-component>
+    </webservice-description>
+</webservices>
+
+

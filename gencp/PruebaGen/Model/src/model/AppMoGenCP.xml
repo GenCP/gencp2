@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppMoGenCP"
+  Version="11.1.2.60.17"
+  ComponentClass="model.AppMoGenCPImpl"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="model.AppMoGenCP_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="FlujoBasicoView1"
+    ViewObjectName="model.view.FlujoBasicoView"/>
+  <ViewUsage
+    Name="FlujoAlternativoView1"
+    ViewObjectName="model.view.FlujoAlternativoView"/>
+  <ViewUsage
+    Name="FlujoErrorView1"
+    ViewObjectName="model.view.FlujoErrorView"/>
+  <ViewUsage
+    Name="ValoresDeParametrosView1"
+    ViewObjectName="model.view.ValoresDeParametrosView"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>
